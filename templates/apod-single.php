@@ -8,7 +8,7 @@
             <div class="row marketing">
                 <div class="col-md-10">
                     <h4><?php echo $apod->copyright . "  |  " . $apod->date; ?></h4>
-                    <p>Date: <?php echo $apod->explanation; ?></p>
+                    <p><?php echo $apod->explanation; ?></p>
                     <img class="apod-picture" src="<?php echo $apod->url; ?>" alt="">
                     <br><br>
                     <a href="<?php echo $apod->hdurl; ?>">HD Image</a>
