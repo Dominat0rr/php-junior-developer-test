@@ -20,7 +20,20 @@
     if ($apods != null) {
         foreach($apods as $apod) {
             if (!$apodView->getPictureByDate($apod->date)) {
-                $apodView->addPicture($apod->copyright, $apod->date, $apod->explanation, $apod->hdurl, $apod->title, $apod->url);
+
+                if (isset($apod->copyright)) {
+                    $copyright = $apod->copyright;
+                } else {
+                   $copyright = null;
+                }
+
+                if (isset($apod->hdurl)) {
+                    $hdurl = $apod->hdurl;
+                } else {
+                    $hdurl = null;
+                }
+                
+                $apodView->addPicture($copyright, $apod->date, $apod->explanation, $hdurl, $apod->title, $apod->url);
             }
         }
     }

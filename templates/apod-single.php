@@ -7,11 +7,25 @@
         <?php  if ($apod != null) { ?>
             <div class="row marketing">
                 <div class="col-md-10">
-                    <h4><?php echo $apod->copyright . "  |  " . $apod->date; ?></h4>
+                    <?php 
+                        $pic_heading = "";
+                        if (isset($apod->copyright)) {
+                            $pic_heading = $apod->copyright . "  |  " . $apod->date;
+                        } else {
+                            $pic_heading = $apod->date;
+                        }
+                    ?>
+                    <h4><?php echo $pic_heading; ?></h4>
                     <p><?php echo $apod->explanation; ?></p>
                     <img class="apod-picture" src="<?php echo $apod->url; ?>" alt="">
                     <br><br>
-                    <a href="<?php echo $apod->hdurl; ?>">HD Image</a>
+
+                    <?php
+                        if (isset($apod->hdurl)) {
+                            echo "<a href='<?php echo $apod->hdurl; ?>'>HD Image</a>";
+                        }
+
+                    ?>
                     <br>
                     <a href="index.php" class="btn btn-default">Go Back</a>
                 </div>
