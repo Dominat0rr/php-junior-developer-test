@@ -25,21 +25,6 @@
     border-top: 1px solid #e5e5e5;
   }
 
-  .brouwer-naam, .bier-naam {
-    width: 100%;
-    font-size: 18px;
-  }
-
-  .brouwer-naam a, .bier-naam a {
-    text-decoration: none;
-    color: #333;
-  }
-
-  .brouwer-naam a:hover, .bier-naam a:hover {
-    text-decoration: none;
-    color: #999;
-  }
-
   .container-narrow > hr {
     margin: 30px 0;
   }
@@ -48,16 +33,23 @@
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
   }
+
   .jumbotron .btn {
     padding: 14px 24px;
     font-size: 21px;
   }
   
-  .marketing {
+  .row.marketing {
+    display: inline-block;
     margin: 20px 0;
   }
+
   .marketing p + h4 {
     margin-top: 28px;
+  }
+
+  .col-md-10 {
+    width: 100% !important;
   }
 
   a > .apod-picture {
@@ -66,6 +58,7 @@
   }
 
   .apod-picture {
+    margin-top: 2rem;
     width: 50rem;
     height: 30rem;
   }

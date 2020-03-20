@@ -17,6 +17,8 @@
             endforeach; 
             }
         ?>
+        <br>
         <?php echo $links; ?>
+        <br><br>
 
 <?php include 'includes/footer.php'; ?>

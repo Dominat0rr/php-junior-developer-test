@@ -13,8 +13,14 @@
     $apodDate = isset($_GET['date']) ? $_GET['date'] : null;
 
     if ($apodDate) {
-        $template->apod = $apodView->showApodPictureWithGivenDate($apodDate);
-        $template->title = $template->apod->title;
+        //$template->apod = $apodView->showApodPictureWithGivenDate($apodDate);
+        $template->apod = $apodView->getPictureByDate($apodDate);
+
+        if ($template->apod == null) {
+            $template->title = "We hebben geen foto gevonden voor deze datum";
+        } else {
+            $template->title = $template->apod->title;
+        }
     } else {
         $template->title = "We hebben geen foto gevonden voor deze datum";
     }
