@@ -27,8 +27,11 @@ Feel free to use whichever framework you feel most comfortable with.
 edit the following:
 
 define("DB_HOST", "");
+
 define("DB_USER", "");
+
 define("DB_PASSWORD", "");
+
 define("DB_NAME", "");
     
 - example script to create databse:
