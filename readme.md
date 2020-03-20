@@ -25,16 +25,18 @@ Feel free to use whichever framework you feel most comfortable with.
 - edit the following file with your database credentials and database schema: config/config.php
 
 edit the following:
-    # Database params
-    define("DB_HOST", "");
-    define("DB_USER", "");
-    define("DB_PASSWORD", "");
-    define("DB_NAME", "");
+
+define("DB_HOST", "");
+define("DB_USER", "");
+define("DB_PASSWORD", "");
+define("DB_NAME", "");
     
 - example script to create databse:
+
 create database statiknasa charset utf8mb4;
 
 - script to create table (pictures):
+
 create table pictures (
   id bigint(20) unsigned not null auto_increment,
   copyright varchar(255),
