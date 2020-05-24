@@ -23,7 +23,7 @@
 
         # Datasbase
         protected function findLastestDate() {
-            $sql = "SELECT date FROM pictures ORDER BY date LIMIT 1";
+            $sql = "SELECT date FROM pictures ORDER BY date DESC LIMIT 1";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute();
 
@@ -40,7 +40,7 @@
         }
 
         protected function findAll() {
-            $sql = "SELECT * FROM pictures";
+            $sql = "SELECT * FROM pictures ORDER BY date DESC";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute();
 
@@ -48,7 +48,7 @@
         }
 
         protected function findAllWithPagination($startAt, $perPage) {
-            $sql = "SELECT * FROM pictures ORDER BY date ASC LIMIT :startAt, :perPage";
+            $sql = "SELECT * FROM pictures ORDER BY date DESC LIMIT :startAt, :perPage";
             $stmt = $this->connect()->prepare($sql);
             $stmt->bindParam(":startAt", $startAt);
             $stmt->bindParam(":perPage", $perPage);
@@ -57,12 +57,13 @@
             return $stmt->fetchAll();
         }
 
-        protected function create($copyright, $date, $explanation, $hdurl, $title, $url) {
-            $sql = "INSERT INTO pictures (copyright, date, explanation, hdurl, title, url) VALUES (:copyright, :date, :explanation, :hdurl, :title, :url)";
+        protected function create($copyright, $date, $explanation, $media_type, $hdurl, $title, $url) {
+            $sql = "INSERT INTO pictures (copyright, date, explanation, media_type, hdurl, title, url) VALUES (:copyright, :date, :explanation, :media_type, :hdurl, :title, :url)";
             $stmt = $this->connect()->prepare($sql);
             $stmt->bindParam(':copyright', $copyright);
             $stmt->bindParam(':date', $date);
             $stmt->bindParam(':explanation', $explanation);
+            $stmt->bindParam(':media_type', $media_type);
             $stmt->bindParam(':hdurl', $hdurl);
             $stmt->bindParam(':title', $title);
             $stmt->bindParam(':url', $url);

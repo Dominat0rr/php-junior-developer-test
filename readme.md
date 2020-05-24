@@ -40,13 +40,14 @@ create database statiknasa charset utf8mb4;
 
 - script to create table (pictures):
 
-create table pictures (
-  id bigint(20) unsigned not null auto_increment,
-  copyright varchar(255),
-  date date not null,
-  explanation text,
-  hdurl varchar(255),
-  title varchar(255),
-  url varchar(255),
-  primary key (id)
-);
+create table pictures ( 
+    id bigint(20) unsigned not null auto_increment, 
+    copyright varchar(255), 
+    date date not null, 
+    explanation text, 
+    media_type varchar(255) not null, 
+    hdurl varchar(255), 
+    title varchar(255), 
+    url varchar(255), 
+    primary key (id) 
+    );

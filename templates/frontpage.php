@@ -10,7 +10,15 @@
                 <div class="col-md-10">
                     <h4><?php echo $apod->title; ?></h4>
                     <p>Date: <?php echo $apod->date; ?></p>
-                    <a href="apod.php?date=<?php echo $apod->date; ?>"><img class="apod-picture" src="<?php echo $apod->url; ?>" alt=""></a>
+                    <?php
+                        if ($apod->media_type == "image") {
+                            echo "<a href='apod.php?date=" . $apod->date . "'><img class='apod-picture' src='". $apod->url . "' alt=''></a>";
+                        } else {
+                            echo "<iframe width=\"670\" height=\"500\" src=\" $apod->url \"></iframe>";
+                            echo "<br>";
+                            echo "<a class='btn btn-default' href='apod.php?date=" . $apod->date . "'>Video details</a>";
+                        }
+                    ?>
                 </div>
         </div>
         <?php 

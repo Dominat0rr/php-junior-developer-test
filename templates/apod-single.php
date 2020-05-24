@@ -17,7 +17,16 @@
                     ?>
                     <h4><?php echo $pic_heading; ?></h4>
                     <p><?php echo $apod->explanation; ?></p>
-                    <img class="apod-picture" src="<?php echo $apod->url; ?>" alt="">
+<!--                    <img class="apod-picture" src="--><?php //echo $apod->url; ?><!--" alt="">-->
+
+                    <?php
+                        if ($apod->media_type == "image") {
+                            echo "<img class='apod-picture' src='". $apod->url . "' alt=''>";
+                        } else {
+                            echo "<iframe width=\"420\" height=\"300\" src=\" $apod->url \"></iframe>";
+                        }
+                    ?>
+
                     <br><br>
 
                     <?php

@@ -8,32 +8,34 @@
 <?php
     $template = new Template('templates/frontpage.php');
     $apodView = new APODView();
+    $days = 30;
 
     $current_date = date('Y-m-d');
     $latest_date = $apodView->getLatestDay();
-    $apods = null;
+    $latest_date = (isset($latest_date->date)) ? $latest_date->date : null;
 
     if ($current_date > $latest_date) {
-        $apods = $apodView->showApodPictures(30);
-    }
+        for ($i = 0; $i < $days; $i++) {
+            $current = time();
+            $date = date('Y-m-d', strtotime('-' . $i . 'day', $current));
+            $apod = $apodView->getPictureByDate($date);
 
-    if ($apods != null) {
-        foreach($apods as $apod) {
-            if (!$apodView->getPictureByDate($apod->date)) {
+            if (!$apod) {
+                $apodAPI = $apodView->showApodPictureWithGivenDate($date);
 
-                if (isset($apod->copyright)) {
-                    $copyright = $apod->copyright;
+                if (isset($apodAPI->copyright)) {
+                    $copyright = $apodAPI->copyright;
                 } else {
-                   $copyright = null;
+                    $copyright = null;
                 }
 
-                if (isset($apod->hdurl)) {
-                    $hdurl = $apod->hdurl;
+                if (isset($apodAPI->hdurl)) {
+                    $hdurl = $apodAPI->hdurl;
                 } else {
                     $hdurl = null;
                 }
-                
-                $apodView->addPicture($copyright, $apod->date, $apod->explanation, $hdurl, $apod->title, $apod->url);
+
+                $apodView->addPicture($copyright, $apodAPI->date, $apodAPI->explanation, $apodAPI->media_type, $hdurl, $apodAPI->title, $apodAPI->url);
             }
         }
     }
@@ -56,4 +58,5 @@
     $template->title = "Astronomy Picture of the Day";
 
     echo $template;
+
 ?>

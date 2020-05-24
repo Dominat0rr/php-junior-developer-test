@@ -27,8 +27,8 @@
             return $this->findByDate($date);
         }
 
-        public function addPicture($copyright, $date, $explanation, $hdurl, $title, $url) {
-            $this->create($copyright, $date, $explanation, $hdurl, $title, $url);
+        public function addPicture($copyright, $date, $explanation, $media_type, $hdurl, $title, $url) {
+            $this->create($copyright, $date, $explanation, $media_type, $hdurl, $title, $url);
         }
     }
 
